@@ -15,7 +15,9 @@ def test_each_test_attached_to_file(caplog):
 
     assert "tests" in glob.glob("*"), "can't identify tests directory"
 
-    _get_relative_path = lambda root_path, x: x[len(root_path) + 1 :]
+    _get_relative_path = lambda root_path, x: x[len(root_path) + 1 :].replace(
+        "test_", ""
+    )
 
     _get_python_files = lambda root_path: list(
         map(
